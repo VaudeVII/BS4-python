@@ -2,7 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 
-#-----setup
 url = "https://realpython.github.io/fake-jobs/"
 keywords = [k.strip().lower() for k in input("enter keywords separated by commas (example: python, developer): ").split(",") if k.strip()]
 jobs = []
@@ -27,7 +26,6 @@ for card in soup.select("#ResultsContainer div.card"):
 
 print(f"Found {len(jobs)} matching jobs")
 
-#-----save results
 with open("jobs.csv", "w", newline="", encoding="utf-8") as f:
     writer = csv.DictWriter(f, fieldnames=["title", "company", "location", "date_posted", "apply_link"])
     writer.writeheader()
